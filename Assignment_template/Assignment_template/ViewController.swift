@@ -21,6 +21,16 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var plane: dragged_image!
     
+    var birdAnimator: UIDynamicAnimator!
+    var birdViewBehavior: UIDynamicItemBehavior!
+    
+    
+    var birdView = UIImageView(image: nil)
+    
+
+    
+    //@IBOutlet weak var bird: UIImageView!
+    
     let W = UIScreen.main.bounds.width
     let H = UIScreen.main.bounds.height
     
@@ -113,13 +123,34 @@ class ViewController: UIViewController {
         }, completion: nil
         )
 
-        
+       // var birdView = UIImageView(image: nil)
+      
+        birdView.frame = CGRect(x: W, y: 100, width: 50, height: 50)
+        self.view.addSubview(birdView);
 
+        var imageArrayBird: [UIImage]!
         
+        imageArrayBird = [UIImage(named: "bird1.png")!,
+                           UIImage(named: "bird2.png")!,
+                           UIImage(named: "bird3.png")!,
+                           UIImage(named: "bird4.png")!,
+                           UIImage(named: "bird5.png")!,
+                           UIImage(named: "bird6.png")!,
+                           UIImage(named: "bird7.png")!,
+                           UIImage(named: "bird8.png")!,
+                           UIImage(named: "bird9.png")!,
+                           UIImage(named: "bird10.png")!]
         
+        birdView.image = UIImage.animatedImage(with: imageArrayBird, duration: 1)
+
+        birdAnimator = UIDynamicAnimator(referenceView: self.view)
         
+        birdViewBehavior = UIDynamicItemBehavior(items: [birdView])
+        self.birdViewBehavior.addLinearVelocity(CGPoint(x: 0, y: 300), for: birdView)
+        birdAnimator.addBehavior(birdViewBehavior)
+        
+     
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
