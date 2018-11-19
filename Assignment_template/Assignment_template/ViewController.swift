@@ -21,11 +21,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var plane: dragged_image!
     
-    var birdAnimator: UIDynamicAnimator!
-    var birdViewBehavior: UIDynamicItemBehavior!
+    var birdDynamicAnimator: UIDynamicAnimator!
+    var birdViewDynamicBehavior: UIDynamicItemBehavior!
     
     
-    var birdView = UIImageView(image: nil)
+    //var birdView = UIImageView(image: nil)
     
 
     
@@ -123,14 +123,23 @@ class ViewController: UIViewController {
         }, completion: nil
         )
 
-       // var birdView = UIImageView(image: nil)
-      
-        birdView.frame = CGRect(x: W, y: 100, width: 50, height: 50)
-        self.view.addSubview(birdView);
-
-        var imageArrayBird: [UIImage]!
+        //var birdView = UIImageView(image: nil)
+    
+        var i = 5;
+        while i >= 0 {
+            //let when = DispatchTime.now() + 2
         
-        imageArrayBird = [UIImage(named: "bird1.png")!,
+            //DispatchQueue.main.asyncAfter(deadline: when) {
+            var random_height = Int(arc4random_uniform(UInt32(H))) + 0;
+            let random_speed = Int(arc4random_uniform(200)) + 90;
+            var birdView = UIImageView(image: nil)
+            
+            birdView.frame = CGRect(x: Int(self.W), y: random_height, width: 50, height: 50)
+                view.addSubview(birdView);
+
+                var imageArrayBird: [UIImage]!
+        
+                imageArrayBird = [UIImage(named: "bird1.png")!,
                            UIImage(named: "bird2.png")!,
                            UIImage(named: "bird3.png")!,
                            UIImage(named: "bird4.png")!,
@@ -141,15 +150,23 @@ class ViewController: UIViewController {
                            UIImage(named: "bird9.png")!,
                            UIImage(named: "bird10.png")!]
         
-        birdView.image = UIImage.animatedImage(with: imageArrayBird, duration: 1)
+                birdView.image = UIImage.animatedImage(with: imageArrayBird, duration: 1)
 
-        birdAnimator = UIDynamicAnimator(referenceView: self.view)
+        //this is entialising the dynamic animator
+            self.birdDynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+            self.birdViewDynamicBehavior = UIDynamicItemBehavior(items: [])
+            self.birdDynamicAnimator.addBehavior(self.birdViewDynamicBehavior)
         
-        birdViewBehavior = UIDynamicItemBehavior(items: [birdView])
-        self.birdViewBehavior.addLinearVelocity(CGPoint(x: 0, y: 300), for: birdView)
-        birdAnimator.addBehavior(birdViewBehavior)
         
-     
+            
+            self.birdViewDynamicBehavior.addItem(birdView)
+            self.birdViewDynamicBehavior.addLinearVelocity(CGPoint(x: -random_speed, y: 0), for: birdView)
+        
+        i = i - 1;
+        }
+        
+    
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
