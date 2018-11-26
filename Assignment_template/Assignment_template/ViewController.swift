@@ -24,11 +24,20 @@ class ViewController: UIViewController {
     var birdDynamicAnimator: UIDynamicAnimator!
     var birdViewDynamicBehavior: UIDynamicItemBehavior!
     
-    
+   // let delayArray = [0, 3, 5, 7, 9, 11, 13, 15, 17, 19]
     //var birdView = UIImageView(image: nil)
-    
+   // var delayviewArray: [UIImageView] = []
 
     
+    var birdDynamicAnimator: UIDynamicAnimator!
+    var birdViewDynamicBehavior: UIDynamicItemBehavior!
+    
+    var birdDynamicAnimator1: UIDynamicAnimator!
+    var birdViewDynamicBehavior1: UIDynamicItemBehavior!
+    
+    let delayArray1 = [2, 5, 8, 11, 14, 16, 19, 21, 23, 25]
+    //var birdView = UIImageView(image: nil)
+    var delayviewArray1: [UIImageView] = []
     //@IBOutlet weak var bird: UIImageView!
     
     let W = UIScreen.main.bounds.width
@@ -125,46 +134,105 @@ class ViewController: UIViewController {
 
         //var birdView = UIImageView(image: nil)
     
-        var i = 5;
-        while i >= 0 {
-            //let when = DispatchTime.now() + 2
+        //var i = 5;
         
-            //DispatchQueue.main.asyncAfter(deadline: when) {
-            var random_height = Int(arc4random_uniform(UInt32(H))) + 0;
-            let random_speed = Int(arc4random_uniform(200)) + 90;
-            var birdView = UIImageView(image: nil)
+        
+     //   for index in 0...9 {
+    //        //let random_delay = Int(arc4random_uniform(3)) + 0
+    //        let delay = Double(self.delayArray[index])
+    //
+    //        let when = DispatchTime.now() + delay
+    //
+    //        //let random_speed = Int(arc4random_uniform(200)) + 90;
+    //
+    //
+    //        DispatchQueue.main.asyncAfter(deadline: when) {
+    //            //let random_height = CGFloat(arc4random_uniform(UInt32(self.H))) + 0;
+    //            let birdView = UIImageView(image: nil)
+    //                var imageArrayBird: [UIImage]!
+    //
+    //                imageArrayBird = [UIImage(named: "bird1.png")!,
+    //                                  UIImage(named: "bird2.png")!,
+    //                                  UIImage(named: "bird3.png")!,
+    //                                  UIImage(named: "bird4.png")!,
+     //                                 UIImage(named: "bird5.png")!,
+    //                                  UIImage(named: "bird6.png")!,
+    //                                  UIImage(named: "bird7.png")!,
+    //                                  UIImage(named: "bird8.png")!,
+    //                                  UIImage(named: "bird9.png")!,
+    //                                  UIImage(named: "bird10.png")!]
+    //
+    //                birdView.image = UIImage.animatedImage(with: imageArrayBird, duration: 0.3)
+//
+  //
+   //             birdView.frame = CGRect(x: self.W, y: CGFloat(arc4random_uniform(UInt32(self.H))), width: 50, height: 50)
+   //             self.view.addSubview(birdView)
+   //             self.delayviewArray.append(birdView)
+   //
+   //             //this is entialising the dynamic animator
+   //             self.birdDynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+   //             self.birdViewDynamicBehavior = UIDynamicItemBehavior(items: [])
+   //             self.birdDynamicAnimator.addBehavior(self.birdViewDynamicBehavior)
+   //
+   ///
+   //             self.birdViewDynamicBehavior.addItem(birdView)
+    //
+    //            self.birdViewDynamicBehavior.addLinearVelocity(CGPoint(x: -400, y: 0), for: birdView)
+                
             
-            birdView.frame = CGRect(x: Int(self.W), y: random_height, width: 50, height: 50)
-                view.addSubview(birdView);
+     //       }
+       // i = i - 1;
 
+     //   }
+        
+        
+        for index in 0...9 {
+            //let random_delay = Int(arc4random_uniform(3)) + 0
+            let delay = Double(self.delayArray1[index])
+            
+            let when = DispatchTime.now() + delay
+            
+            //let random_speed = Int(arc4random_uniform(200)) + 90;
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                //let random_height = CGFloat(arc4random_uniform(UInt32(self.H))) + 0;
+                let birdView = UIImageView(image: nil)
                 var imageArrayBird: [UIImage]!
-        
+                
                 imageArrayBird = [UIImage(named: "bird1.png")!,
-                           UIImage(named: "bird2.png")!,
-                           UIImage(named: "bird3.png")!,
-                           UIImage(named: "bird4.png")!,
-                           UIImage(named: "bird5.png")!,
-                           UIImage(named: "bird6.png")!,
-                           UIImage(named: "bird7.png")!,
-                           UIImage(named: "bird8.png")!,
-                           UIImage(named: "bird9.png")!,
-                           UIImage(named: "bird10.png")!]
-        
-                birdView.image = UIImage.animatedImage(with: imageArrayBird, duration: 1)
-
-        //this is entialising the dynamic animator
-            self.birdDynamicAnimator = UIDynamicAnimator(referenceView: self.view)
-            self.birdViewDynamicBehavior = UIDynamicItemBehavior(items: [])
-            self.birdDynamicAnimator.addBehavior(self.birdViewDynamicBehavior)
-        
-        
+                                  UIImage(named: "bird2.png")!,
+                                  UIImage(named: "bird3.png")!,
+                                  UIImage(named: "bird4.png")!,
+                                  UIImage(named: "bird5.png")!,
+                                  UIImage(named: "bird6.png")!,
+                                  UIImage(named: "bird7.png")!,
+                                  UIImage(named: "bird8.png")!,
+                                  UIImage(named: "bird9.png")!,
+                                  UIImage(named: "bird10.png")!]
+                
+                birdView.image = UIImage.animatedImage(with: imageArrayBird, duration: 0.3)
+                
+                
+                birdView.frame = CGRect(x: self.W, y: CGFloat(arc4random_uniform(UInt32(self.H))), width: 50, height: 50)
+                self.view.addSubview(birdView)
+                self.delayviewArray1.append(birdView)
+                
+                //this is entialising the dynamic animator
+                self.birdDynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+                self.birdViewDynamicBehavior = UIDynamicItemBehavior(items: [])
+                self.birdDynamicAnimator.addBehavior(self.birdViewDynamicBehavior)
+                
+                
+                self.birdViewDynamicBehavior.addItem(birdView)
+                
+                self.birdViewDynamicBehavior.addLinearVelocity(CGPoint(x: -400, y: 0), for: birdView)
+                
+                
+            }
+            // i = i - 1;
             
-            self.birdViewDynamicBehavior.addItem(birdView)
-            self.birdViewDynamicBehavior.addLinearVelocity(CGPoint(x: -random_speed, y: 0), for: birdView)
-        
-        i = i - 1;
         }
-        
     
         
     }
